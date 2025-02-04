@@ -1,23 +1,36 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
-	chessBoard(8, 8)
+	var lineCount int
+	var columnCount int
+
+	fmt.Println("Введите размер шахматной доски (кол-во строк кол-во столбцов) через пробел:")
+	_, err := fmt.Scanf("%d %d", &lineCount, &columnCount)
+	if err != nil {
+		fmt.Print(err)
+		return
+	}
+
+	chessBoard(lineCount, columnCount)
 }
 
 func chessBoard(lineCount int, columnCount int) {
-	var result string
+	var result strings.Builder
 	for line := 0; line < lineCount; line++ {
 		for column := 0; column < columnCount; column++ {
 			if line%2 == column%2 {
-				result += "#"
+				result.WriteString("#")
 			} else {
-				result += " "
+				result.WriteString(" ")
 			}
 		}
-		result += "\n"
+		result.WriteString("\n")
 	}
 
-	fmt.Print(result)
+	fmt.Print(result.String())
 }
