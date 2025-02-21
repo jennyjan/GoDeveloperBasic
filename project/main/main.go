@@ -3,12 +3,16 @@ package main
 import (
 	"fmt"
 
-	"project/internal/models"
+	"project/internal/repository"
+	"project/internal/service"
 )
 
 func main() {
-	fmt.Println(models.NewTask("new task", "all"))
-	fmt.Println(models.GetTask())
-	fmt.Println(models.NewTag("new tag"))
-	fmt.Println(models.GetTag())
+
+	for i := 0; i < 10; i++ {
+		service.CreateModel()
+	}
+
+	fmt.Println(repository.TaskSlice)
+	fmt.Println(repository.TagSlice)
 }
