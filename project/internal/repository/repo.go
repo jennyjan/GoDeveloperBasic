@@ -4,14 +4,18 @@ import (
 	"project/internal/models"
 )
 
-var TaskSlice []interface{}
-var TagSlice []interface{}
+type Item interface {
+	GetId() int
+}
 
-func CreateSlice(item any) {
-	switch item.(type) {
+var TaskSlice []models.Task
+var TagSlice []models.Tag
+
+func FillSlice(item Item) {
+	switch value := item.(type) {
 	case models.Task:
-		TaskSlice = append(TaskSlice, item)
+		TaskSlice = append(TaskSlice, value)
 	case models.Tag:
-		TagSlice = append(TagSlice, item)
+		TagSlice = append(TagSlice, value)
 	}
 }
