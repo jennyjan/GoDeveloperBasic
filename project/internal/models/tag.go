@@ -11,9 +11,6 @@ func NewTag(name string) Tag {
 	}
 }
 
-func GetTag() Tag {
-	return Tag{
-		id:   1,
-		name: "Tag",
-	}
+func (tag Tag) GetId() int {
+	return tag.id
 }

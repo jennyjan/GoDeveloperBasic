@@ -14,9 +14,6 @@ func NewTask(name string, tag string) Task {
 	}
 }
 
-func GetTask() Task {
-	return Task{
-		id:   1,
-		name: "New",
-	}
+func (task Task) GetId() int {
+	return task.id
 }
